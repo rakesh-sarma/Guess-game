@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess Game</title>
+    <style>
+        body{
+            text-align: center;
+            
+        }
+        .container{
+            margin-top: 150px;
+        }
+        label{
+            margin-top: 50px;
+            margin-right: 50px;
+            font-size: larger;
+        }
+        input{
+            margin-bottom: 50px;
+        }
+        button{
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <h1>Guess Karo Prize Jeeto</h1>
+    <label for="input_no">Enter a number</label>
+    <input id="input_no" type="text"><br>
+    <button id="enter_btn" type="submit" onclick="game()">Enter</button>
+    <h2>Result:</h2>
+    <p id="msg"></p>
+    <h2>History:</h2>
+    <p id="history"></p>
+</div>
+    <script>
+    function game(){
+        let prize=25;
+        let guess=document.getElementById("input_no").value;
+        let result = document.getElementById("msg");
+        let history= document.getElementById("history");
+        if(guess>100 || guess <0 || isNaN(guess) ){
+            alert("Enter a valid number");
+        }
+        else{
+            if(guess<prize){
+                result.innerHTML="Your guess is too low"
+                history.innerHTML=result.innerHTML
+            }
+            else if(guess>prize){
+                result.innerHTML="Your guess is too high"
+                history.innerHTML=result.innerHTML
+            }
+            else if(guess==prize){
+                result.innerHTML="You Won"
+                history.innerHTML=result.innerHTML
+            }
+        }
+    }
+    </script>
+</body>
+</html>
